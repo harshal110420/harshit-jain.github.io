@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,7 +16,7 @@
         --legal-gold: #c9a663;
         --photo-teal: #2dd4bf;
         --trader-emerald: #10b981;
-        
+
         /* Dark Theme (default) */
         --bg-primary: #050a14;
         --bg-secondary: #0a1628;
@@ -50,7 +50,9 @@
         color: var(--text-primary);
         overflow-x: hidden;
         line-height: 1.7;
-        transition: background 0.4s ease, color 0.4s ease;
+        transition:
+          background 0.4s ease,
+          color 0.4s ease;
       }
 
       /* Smooth Scroll */
@@ -71,7 +73,9 @@
         position: fixed;
         pointer-events: none;
         z-index: 9999;
-        transition: transform 0.2s ease, border-color 0.3s ease;
+        transition:
+          transform 0.2s ease,
+          border-color 0.3s ease;
         mix-blend-mode: difference;
       }
 
@@ -91,7 +95,7 @@
         position: fixed;
         top: 0;
         width: 100%;
-        padding: 1rem 5%;
+        padding: 1.5rem 5%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -107,7 +111,11 @@
         font-size: 1.8rem;
         font-weight: 800;
         letter-spacing: -1px;
-        background: linear-gradient(135deg, var(--legal-gold), var(--photo-teal));
+        background: linear-gradient(
+          135deg,
+          var(--legal-gold),
+          var(--photo-teal)
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -180,8 +188,7 @@
 
       /* Hero Section */
       .hero {
-        height: 100vh;
-        padding-top: 100px;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -189,6 +196,7 @@
         overflow: hidden;
         background: var(--bg-secondary);
         transition: background 0.4s ease;
+        padding-top: 100px;
       }
 
       .hero::before {
@@ -196,28 +204,35 @@
         position: absolute;
         width: 150%;
         height: 150%;
-        background: radial-gradient(
-          circle at 20% 50%,
-          rgba(201, 166, 99, 0.15) 0%,
-          transparent 50%
-        ),
-        radial-gradient(
-          circle at 80% 50%,
-          rgba(45, 212, 191, 0.1) 0%,
-          transparent 50%
-        );
+        background:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(201, 166, 99, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 50%,
+            rgba(45, 212, 191, 0.1) 0%,
+            transparent 50%
+          );
         animation: float 20s ease-in-out infinite;
       }
 
       @keyframes float {
-        0%, 100% { transform: translate(0, 0) rotate(0deg); }
-        33% { transform: translate(30px, -30px) rotate(5deg); }
-        66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(30px, -30px) rotate(5deg);
+        }
+        66% {
+          transform: translate(-20px, 20px) rotate(-5deg);
+        }
       }
 
       .hero-content {
         text-align: center;
-         padding-top: 230px !important;
         z-index: 2;
         max-width: 1200px;
         padding: 0 2rem;
@@ -246,7 +261,12 @@
 
       .hero-title .name {
         display: block;
-        background: linear-gradient(135deg, var(--legal-gold), var(--photo-teal), var(--trader-emerald));
+        background: linear-gradient(
+          135deg,
+          var(--legal-gold),
+          var(--photo-teal),
+          var(--trader-emerald)
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -284,9 +304,21 @@
       }
 
       @keyframes rotateRole {
-        0%, 33% { opacity: 0; transform: translateY(100%); }
-        33.33%, 30% { opacity: 1; transform: translateY(0); }
-        33.33%, 66% { opacity: 0; transform: translateY(-100%); }
+        0%,
+        33% {
+          opacity: 0;
+          transform: translateY(100%);
+        }
+        33.33%,
+        30% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        33.33%,
+        66% {
+          opacity: 0;
+          transform: translateY(-100%);
+        }
       }
 
       .hero-description {
@@ -344,7 +376,11 @@
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, var(--legal-gold), var(--trader-emerald));
+        background: linear-gradient(
+          135deg,
+          var(--legal-gold),
+          var(--trader-emerald)
+        );
         color: #000;
       }
 
@@ -355,7 +391,11 @@
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, var(--photo-teal), var(--legal-gold));
+        background: linear-gradient(
+          135deg,
+          var(--photo-teal),
+          var(--legal-gold)
+        );
         transition: left 0.4s ease;
       }
 
@@ -488,9 +528,15 @@
         margin-bottom: 1rem;
       }
 
-      .pillar-card:nth-child(1) h3 { color: var(--legal-gold); }
-      .pillar-card:nth-child(2) h3 { color: var(--photo-teal); }
-      .pillar-card:nth-child(3) h3 { color: var(--trader-emerald); }
+      .pillar-card:nth-child(1) h3 {
+        color: var(--legal-gold);
+      }
+      .pillar-card:nth-child(2) h3 {
+        color: var(--photo-teal);
+      }
+      .pillar-card:nth-child(3) h3 {
+        color: var(--trader-emerald);
+      }
 
       .pillar-card p {
         color: var(--text-secondary);
@@ -520,9 +566,15 @@
         margin-bottom: 0.3rem;
       }
 
-      .pillar-card:nth-child(1) .stat-value { color: var(--legal-gold); }
-      .pillar-card:nth-child(2) .stat-value { color: var(--photo-teal); }
-      .pillar-card:nth-child(3) .stat-value { color: var(--trader-emerald); }
+      .pillar-card:nth-child(1) .stat-value {
+        color: var(--legal-gold);
+      }
+      .pillar-card:nth-child(2) .stat-value {
+        color: var(--photo-teal);
+      }
+      .pillar-card:nth-child(3) .stat-value {
+        color: var(--trader-emerald);
+      }
 
       .stat-label {
         font-family: "JetBrains Mono", monospace;
@@ -557,7 +609,11 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(45, 212, 191, 0.3), rgba(16, 185, 129, 0.3));
+        background: linear-gradient(
+          135deg,
+          rgba(45, 212, 191, 0.3),
+          rgba(16, 185, 129, 0.3)
+        );
         opacity: 0;
         transition: opacity 0.4s ease;
         z-index: 1;
@@ -577,7 +633,14 @@
         transition: transform 0.4s ease;
       }
 
-      .gallery-item:hover .gallery-placeholder {
+      .gallery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .gallery-item:hover .gallery-img {
         transform: scale(1.1);
       }
 
@@ -652,7 +715,11 @@
       }
 
       .stat-card {
-        background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(45, 212, 191, 0.05));
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.1),
+          rgba(45, 212, 191, 0.05)
+        );
         border: 1px solid rgba(16, 185, 129, 0.3);
         border-radius: 15px;
         padding: 2.5rem 2rem;
@@ -700,7 +767,11 @@
         font-family: "Crimson Pro", serif;
         font-size: 2.5rem;
         margin-bottom: 2rem;
-        background: linear-gradient(135deg, var(--legal-gold), var(--photo-teal));
+        background: linear-gradient(
+          135deg,
+          var(--legal-gold),
+          var(--photo-teal)
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -852,7 +923,9 @@
       .fade-in {
         opacity: 0;
         transform: translateY(50px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
       }
 
       .fade-in.visible {
@@ -899,8 +972,12 @@
         </p>
         <div class="hero-location">📍 Nagpur, Maharashtra</div>
         <div class="hero-cta">
-          <a href="#contact" class="btn btn-primary"><span>Let's Connect</span></a>
-          <a href="#about" class="btn btn-secondary"><span>Explore More</span></a>
+          <a href="#contact" class="btn btn-primary"
+            ><span>Let's Connect</span></a
+          >
+          <a href="#about" class="btn btn-secondary"
+            ><span>Explore More</span></a
+          >
         </div>
       </div>
     </section>
@@ -945,8 +1022,8 @@
           <h3>Nature Photography</h3>
           <p>
             Passionate wildlife and nature photographer specializing in bird
-            photography. Capturing the untamed beauty of the natural world,
-            one frame at a time. Every shot tells a story of patience and
+            photography. Capturing the untamed beauty of the natural world, one
+            frame at a time. Every shot tells a story of patience and
             connection.
           </p>
           <div class="pillar-stats">
@@ -998,45 +1075,49 @@
 
       <div class="gallery-grid">
         <div class="gallery-item">
-          <div class="gallery-placeholder">🦅</div>
+          <img src="bird-1.jpg" alt="Brahminy Starling" class="gallery-img" />
           <div class="gallery-caption">
-            <h4>Golden Hour Eagle</h4>
-            <p>Majestic flight at sunset</p>
+            <h4>Brahminy Starling</h4>
+            <p>Singing on autumn branch</p>
           </div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-placeholder">🦜</div>
+          <img src="bird-2.jpg" alt="Indian Roller" class="gallery-img" />
           <div class="gallery-caption">
-            <h4>Colorful Parrot</h4>
-            <p>Vibrant plumage in detail</p>
+            <h4>Indian Roller in Flight</h4>
+            <p>Majestic wings spread at dusk</p>
           </div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-placeholder">🦢</div>
+          <img src="bird-3.jpg" alt="Green Bee-eater" class="gallery-img" />
           <div class="gallery-caption">
-            <h4>Serene Swan</h4>
-            <p>Grace on still waters</p>
+            <h4>Green Bee-eater</h4>
+            <p>Vibrant colors on perch</p>
           </div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-placeholder">🦉</div>
+          <img src="bird-4.jpg" alt="Shikra Hawk" class="gallery-img" />
           <div class="gallery-caption">
-            <h4>Wise Owl</h4>
-            <p>Nocturnal hunter's gaze</p>
+            <h4>Shikra Hawk</h4>
+            <p>Hunter's watchful gaze</p>
           </div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-placeholder">🦆</div>
+          <img
+            src="bird-5.jpg"
+            alt="Rose-ringed Parakeet"
+            class="gallery-img"
+          />
           <div class="gallery-caption">
-            <h4>Morning Duck</h4>
-            <p>Dawn reflections</p>
+            <h4>Rose-ringed Parakeet</h4>
+            <p>Peeking from tree hollow</p>
           </div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-placeholder">🦚</div>
+          <img src="bird-6.jpg" alt="Indian Roller" class="gallery-img" />
           <div class="gallery-caption">
-            <h4>Peacock Display</h4>
-            <p>Nature's masterpiece</p>
+            <h4>Indian Roller</h4>
+            <p>Stunning blue flight</p>
           </div>
         </div>
       </div>
@@ -1137,7 +1218,14 @@
           <div class="contact-details">
             <div class="contact-item">
               <span class="icon">📧</span>
-              <a href="mailto:harshit.jain@example.com">harshit.jain@example.com</a>
+              <a
+                href="/cdn-cgi/l/email-protection#d1b9b0a3a2b9b8a5ffbbb0b8bf91b4a9b0bca1bdb4ffb2bebc"
+                ><span
+                  class="__cf_email__"
+                  data-cfemail="94fcf5e6e7fcfde0bafef5fdfad4f1ecf5f9e4f8f1baf7fbf9"
+                  >[email&#160;protected]</span
+                ></a
+              >
             </div>
             <div class="contact-item">
               <span class="icon">📱</span>
@@ -1179,16 +1267,36 @@
       <div class="footer-content">
         <p>&copy; 2026 Harshit Jain. All rights reserved.</p>
         <div class="social-links">
-          <a href="https://instagram.com/harshitjain" target="_blank" aria-label="Personal Instagram" title="Personal Instagram">📷</a>
-          <a href="https://instagram.com/harshit.lens" target="_blank" aria-label="Photography Instagram" title="Photography Portfolio">🦅</a>
+          <a
+            href="https://instagram.com/harshitjain"
+            target="_blank"
+            aria-label="Personal Instagram"
+            title="Personal Instagram"
+            >📷</a
+          >
+          <a
+            href="https://instagram.com/harshit.lens"
+            target="_blank"
+            aria-label="Photography Instagram"
+            title="Photography Portfolio"
+            >🦅</a
+          >
           <a href="#" aria-label="LinkedIn">💼</a>
           <a href="#" aria-label="Twitter">🐦</a>
-          <a href="mailto:harshit.jain@example.com" aria-label="Email">📧</a>
+          <a
+            href="/cdn-cgi/l/email-protection#6c040d1e1f04051842060d05022c09140d011c0009420f0301"
+            aria-label="Email"
+            >📧</a
+          >
         </div>
       </div>
     </footer>
 
     <!-- JavaScript -->
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
     <script>
       // Theme Toggle
       const themeToggle = document.getElementById("themeToggle");
@@ -1203,7 +1311,7 @@
       themeToggle.addEventListener("click", () => {
         const currentTheme = html.getAttribute("data-theme");
         const newTheme = currentTheme === "dark" ? "light" : "dark";
-        
+
         html.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
         updateThemeIcon(newTheme);
@@ -1223,14 +1331,19 @@
       });
 
       // Hover effect on links and buttons
-      const hoverElements = document.querySelectorAll("a, button, .gallery-item, .theme-toggle");
+      const hoverElements = document.querySelectorAll(
+        "a, button, .gallery-item, .theme-toggle",
+      );
       hoverElements.forEach((el) => {
         el.addEventListener("mouseenter", () => {
           cursor.style.transform += " scale(1.5)";
           cursor.style.borderColor = "var(--photo-teal)";
         });
         el.addEventListener("mouseleave", () => {
-          cursor.style.transform = cursor.style.transform.replace(" scale(1.5)", "");
+          cursor.style.transform = cursor.style.transform.replace(
+            " scale(1.5)",
+            "",
+          );
           cursor.style.borderColor = "var(--legal-gold)";
         });
       });
@@ -1249,7 +1362,9 @@
         });
       }, observerOptions);
 
-      document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+      document
+        .querySelectorAll(".fade-in")
+        .forEach((el) => observer.observe(el));
 
       // Smooth scroll for navigation
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -1260,13 +1375,6 @@
             target.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         });
-      });
-
-      // Form submission (placeholder)
-      document.querySelector(".contact-form").addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert("Thank you for your message! I'll get back to you soon.");
-        e.target.reset();
       });
     </script>
   </body>
