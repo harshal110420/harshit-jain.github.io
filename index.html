@@ -95,7 +95,7 @@
         position: fixed;
         top: 0;
         width: 100%;
-        padding: 1.5rem 5%;
+        padding: 1.2rem 5%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -119,6 +119,7 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        z-index: 1001;
       }
 
       .nav-links {
@@ -154,6 +155,43 @@
 
       .nav-links a:hover::after {
         width: 100%;
+      }
+
+      /* Hamburger Button */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        z-index: 1001;
+        padding: 5px;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--text-primary);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+        background: var(--legal-gold);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+        background: var(--legal-gold);
       }
 
       /* Theme Toggle */
@@ -235,7 +273,7 @@
         text-align: center;
         z-index: 2;
         max-width: 1200px;
-        padding: 0 2rem;
+        padding: 4rem 2rem;
       }
 
       .hero-subtitle {
@@ -902,8 +940,69 @@
           display: none;
         }
 
+        /* Hamburger visible on mobile */
+        .hamburger {
+          display: flex;
+        }
+
+        /* Nav links - hidden by default on mobile */
         .nav-links {
-          gap: 1.5rem;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 75%;
+          max-width: 320px;
+          height: 100vh;
+          background: var(--nav-bg);
+          backdrop-filter: blur(30px);
+          border-left: 1px solid var(--border-color);
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 0;
+          padding: 6rem 2.5rem 2.5rem;
+          transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 1000;
+        }
+
+        .nav-links.open {
+          right: 0;
+        }
+
+        .nav-links li {
+          width: 100%;
+          border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-links li:last-child {
+          border-bottom: none;
+        }
+
+        .nav-links a {
+          display: block;
+          padding: 1.2rem 0;
+          font-size: 1.3rem;
+          font-family: "Crimson Pro", serif;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+        }
+
+        /* Overlay background when menu open */
+        .nav-overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+          backdrop-filter: blur(2px);
+        }
+
+        .nav-overlay.active {
+          display: block;
         }
 
         .hero-title {
@@ -916,6 +1015,9 @@
 
         .footer-content {
           flex-direction: column;
+        }
+        .theme-toggle {
+          z-index: 1001;
         }
       }
 
@@ -939,18 +1041,28 @@
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
+    <!-- Nav Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+    <!-- Navigation -->
     <!-- Navigation -->
     <nav>
       <div class="logo">HJ</div>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#photography">Gallery</a></li>
         <li><a href="#legal">Legal</a></li>
         <li><a href="#trading">Trading</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <div class="theme-toggle" id="themeToggle">
-        <span class="theme-icon">🌙</span>
+      <div style="display: flex; align-items: center; gap: 1rem">
+        <div class="theme-toggle" id="themeToggle">
+          <span class="theme-icon">🌙</span>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </nav>
 
@@ -997,21 +1109,21 @@
         <!-- Legal Pillar -->
         <div class="pillar-card">
           <div class="pillar-icon">⚖️</div>
-          <h3>Legal Practice</h3>
+          <h3>Aspiring Lawyer</h3>
           <p>
-            Committed to upholding justice and providing comprehensive legal
-            solutions. Specializing in civil litigation, corporate law, and
-            constitutional matters with a track record of successful
-            representations.
+            Passionate about justice and currently pursuing a career in law.
+            Building a strong foundation in legal principles, constitutional
+            rights, and courtroom advocacy — driven by the belief that every
+            individual deserves fair representation.
           </p>
           <div class="pillar-stats">
             <div class="stat-item">
-              <span class="stat-value">50+</span>
-              <span class="stat-label">Cases Won</span>
+              <span class="stat-value">LL.B</span>
+              <span class="stat-label">Pursuing</span>
             </div>
             <div class="stat-item">
-              <span class="stat-value">5+</span>
-              <span class="stat-label">Years Practice</span>
+              <span class="stat-value">2025</span>
+              <span class="stat-label">Target Bar</span>
             </div>
           </div>
         </div>
@@ -1126,41 +1238,42 @@
     <!-- Legal Practice Areas -->
     <section id="legal" class="container fade-in">
       <div class="section-header">
-        <div class="section-subtitle">Legal Expertise</div>
-        <h2 class="section-title">Practice Areas</h2>
+        <div class="section-subtitle">Future Legal Career</div>
+        <h2 class="section-title">Areas of Interest</h2>
         <p class="section-description">
-          Comprehensive legal services with a focus on client-centric solutions
-          and unwavering commitment to justice.
+          Currently studying and building expertise in these areas of law, with
+          a passion to serve and advocate for justice in the future.
         </p>
       </div>
 
       <div class="practice-areas">
         <div class="practice-card">
-          <h4>Civil Litigation</h4>
+          <h4>Civil Law</h4>
           <p>
-            Expert representation in civil disputes, property matters, and
-            contractual disagreements with a strategic approach.
+            Deep interest in civil disputes, property rights, and contractual
+            matters — learning the nuances of effective legal representation.
           </p>
         </div>
         <div class="practice-card">
           <h4>Corporate Law</h4>
           <p>
-            Business structuring, compliance, mergers & acquisitions, and
-            corporate governance advisory services.
+            Exploring business law, corporate governance, compliance, and the
+            legal frameworks that drive modern enterprises.
           </p>
         </div>
         <div class="practice-card">
           <h4>Constitutional Law</h4>
           <p>
-            Handling matters related to fundamental rights, public interest
-            litigation, and constitutional challenges.
+            Fascinated by fundamental rights, public interest litigation, and
+            the constitutional principles that protect citizens.
           </p>
         </div>
         <div class="practice-card">
           <h4>Family Law</h4>
           <p>
-            Sensitive handling of matrimonial disputes, custody battles, and
-            succession planning with empathy.
+            Understanding the sensitive aspects of matrimonial disputes,
+            custody, and succession — areas requiring both legal acumen and
+            empathy.
           </p>
         </div>
       </div>
@@ -1266,7 +1379,7 @@
     <footer class="container">
       <div class="footer-content">
         <p>&copy; 2026 Harshit Jain. All rights reserved.</p>
-        <div class="social-links">
+        <!-- <div class="social-links">
           <a
             href="https://instagram.com/harshitjain"
             target="_blank"
@@ -1288,7 +1401,7 @@
             aria-label="Email"
             >📧</a
           >
-        </div>
+        </div> -->
       </div>
     </footer>
 
@@ -1298,6 +1411,30 @@
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
     <script>
+      // Hamburger Menu
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+      const navOverlay = document.getElementById("navOverlay");
+
+      function toggleMenu() {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("open");
+        navOverlay.classList.toggle("active");
+        document.body.style.overflow = navLinks.classList.contains("open")
+          ? "hidden"
+          : "";
+      }
+
+      hamburger.addEventListener("click", toggleMenu);
+      navOverlay.addEventListener("click", toggleMenu);
+
+      // Close menu on nav link click
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (navLinks.classList.contains("open")) toggleMenu();
+        });
+      });
+
       // Theme Toggle
       const themeToggle = document.getElementById("themeToggle");
       const themeIcon = themeToggle.querySelector(".theme-icon");
